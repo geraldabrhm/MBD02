@@ -13,4 +13,3 @@ def parseTxnElmt(elmt: str):
             return "[Corner case] transaction element not known"
     except:
         print("Error occured")
-        return False

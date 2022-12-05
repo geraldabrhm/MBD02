@@ -29,17 +29,17 @@ def read(data: str, isRead: bool, txnId: int):
 #         print(f"FINISH VALIDATE AND COMMIT: {val.FINISH}\n")
 
 if __name__ == "__main__":
-    file_name = input("Masukan nama file: ") # TODO change to file-based input
+    file_name = input("Masukan nama file: ")
     numTxn = None # Number of transaction
     dataTxn = [] # Data affected in all transactions (schedule)
-    txnSequence = [] # Sequence of context switch between transaction
-    validatedTxnId = []
+    txnSequence = [] # Sequence of context switch between transaction element
+    validatedTxnId = [] # Transaction id that has been validated
 
-    txn = []
+    txn = [] # Array of transaction
 
     # * FILE HANDLER
     ROOT_DIR = os.path.dirname(__file__)
-    REL_PATH = f"fileinput\{file_name}" # TODO change to file-based input
+    REL_PATH = f"fileinput\{file_name}"
     ABS_PATH = os.path.join(ROOT_DIR, REL_PATH)
 
     with open(ABS_PATH, 'r') as tx_file:
