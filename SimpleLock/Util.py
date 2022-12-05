@@ -1,17 +1,5 @@
 import SimpleLock as SL
 
-class Transaction:
-
-    def __init__(self, id):
-        self.id = id
-
-    def __str__(self):
-        return 'T' + str(self.id)
-    
-    def __eq__(self, transaction):
-        return (self.id == transaction.id)
-            
-
 class Operation:
 
     def __init__ (self, transaction=None, action=None, data=None, operation=None):
@@ -27,6 +15,19 @@ class Operation:
     def __str__(self):
         data = f'({self.data})' if (self.action == 'R' or self.action == 'W') else ""
         return f'{self.action}{self.transaction.id}{data}'
+        
+class Transaction:
+
+    def __init__(self, id):
+        self.id = id
+
+    def __str__(self):
+        return 'T' + str(self.id)
+    
+    def __eq__(self, transaction):
+        return (self.id == transaction.id)
+            
+
 
 # Membaca File
 def generalSetup(fileName):
