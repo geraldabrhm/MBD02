@@ -67,15 +67,15 @@ def SLock_Converter(arrTransaction, arrData, arrString):
         data_label = data.data
         arrDataLabel.append(data_label)
         SL_DataContainer.append(SL.SLData(SL.Data(data_label)))
-    SL_LockManager = SL.LockManager(SL_DataContainer)
+    LockManager = SL.LockManager(SL_DataContainer)
     arrSLTransaction = []
     for transaction in arrTransaction:
-        arrSLTransaction.append(SL.SLTransaction(transaction, SL_LockManager))
+        arrSLTransaction.append(SL.SLTransaction(transaction, LockManager))
     arrOperation = []
     for proc in arrData:
         transaction_id = proc.transaction.id
         action = proc.action
         dataLabel = proc.data
-        arrOperation.append(SL.Operation(arrSLTransaction[transaction_id - 1], action, SL_DataContainer[arrDataLabel.index(dataLabel)], SL_LockManager))
+        arrOperation.append(SL.Operation(arrSLTransaction[transaction_id - 1], action, SL_DataContainer[arrDataLabel.index(dataLabel)], LockManager))
 
-    return arrOperation, SL_LockManager
+    return arrOperation, LockManager
